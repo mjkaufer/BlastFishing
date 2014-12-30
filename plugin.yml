@@ -1,0 +1,11 @@
+name: BlastFishing
+main: org.kaufer.matthew.BlastFishing.BlastFishing
+version: 1.0.0
+author: mjkaufer
+commands:
+    blastfishing:
+        description: returns plugin info
+permissions:
+    BlastFishing.canFish:
+        description: allows users to blastfish
+        default: op

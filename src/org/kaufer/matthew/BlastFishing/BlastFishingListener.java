@@ -17,7 +17,7 @@ import org.bukkit.util.Vector;
 public class BlastFishingListener implements Listener{
 	private BlastFishing plugin;
 	
-	String[] messages = new String[]{ChatColor.AQUA + "SPLOOSH!", ChatColor.AQUA + "Flying fish!", ChatColor.AQUA + "KABLOOIE!"};
+	String[] messages = new String[]{"SPLOOSH!","Flying fish!","KABLOOIE!", "Now that's what I call fishing!"};
 	
 	public BlastFishingListener(BlastFishing instance){
 		plugin = instance;
@@ -72,7 +72,7 @@ public class BlastFishingListener implements Listener{
 	    	else
 	    		i.setAmount(i.getAmount() - 1);
 	    	p.setItemInHand(i);
-	    	p.sendMessage(messages[(int)(Math.random() * messages.length)]);
+	    	p.sendMessage(ChatColor.AQUA + messages[(int)(Math.random() * messages.length)]);
 	    	
 	    }
 

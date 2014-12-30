@@ -25,8 +25,10 @@ public class BlastFishingListener implements Listener{
 	
 	@EventHandler(priority=EventPriority.HIGH)
 	public void onRightClick(PlayerInteractEvent event){
-
+		
 		Player p = event.getPlayer();
+		if(!p.isSneaking())//player must be sneaking to use
+			return;
 		BlockIterator bit = new BlockIterator(p, 8);
 		Block end = null;
 		while(bit.hasNext())
@@ -43,7 +45,7 @@ public class BlastFishingListener implements Listener{
 //		p.sendMessage("Hit water");
 	    if(p.getItemInHand().getType().equals(Material.TNT)){
 	    	Location explosionLoc = end.getLocation().subtract(0, 1, 0);
-	    	p.getWorld().createExplosion(explosionLoc.getX(), explosionLoc.getY(), explosionLoc.getZ(), 1.0f, false, false);//we can't use a location here because no methods for location with two falses
+	    	p.getWorld().createExplosion(explosionLoc.getX(), explosionLoc.getY(), explosionLoc.getZ(), 1.5f, false, false);//we can't use a location here because no methods for location with two falses
 	    	
 	    	int xSize = (int)(Math.random() * 3 + 2);
 	    	int zSize = (int)(Math.random() * 3 + 2);

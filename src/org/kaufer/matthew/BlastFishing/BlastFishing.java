@@ -40,20 +40,7 @@ public class BlastFishing extends JavaPlugin{
             Player player = (Player)sender;
             if(cmd.getName().equalsIgnoreCase("blastfishing"))
             {
-            	if(args.length == 0){
-                    player.sendMessage(ChatColor.AQUA + p.getName() + ChatColor.GREEN + " V" + p.getVersion() + ChatColor.AQUA + " , by " + ChatColor.RED + "mjkaufer");
-            	}
-            	else{
-            		Chunk[] loaded = player.getWorld().getLoadedChunks();
-            		for(Chunk c : loaded){
-            			Entity[] entities = c.getEntities();
-            			for(Entity e : entities){
-            				if(e instanceof Item){//item drop, so we'll screw with it
-            					e.setVelocity(new Vector(Math.random() - 0.5, Math.random() + 1, Math.random() - 0.5).multiply(0.75));
-            				}
-            			}
-            		}
-            	}
+                player.sendMessage(ChatColor.AQUA + p.getName() + ChatColor.GREEN + " V" + p.getVersion() + ChatColor.AQUA + " , by " + ChatColor.RED + "mjkaufer");
             }
             return false;
             

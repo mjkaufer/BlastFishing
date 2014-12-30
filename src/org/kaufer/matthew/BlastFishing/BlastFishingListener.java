@@ -1,5 +1,6 @@
 package org.kaufer.matthew.BlastFishing;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -16,6 +17,8 @@ import org.bukkit.util.Vector;
 public class BlastFishingListener implements Listener{
 	private BlastFishing plugin;
 	
+	String[] messages = new String[]{ChatColor.AQUA + "SPLOOSH!", ChatColor.AQUA + "Flying fish!", ChatColor.AQUA + "KABLOOIE!"};
+	
 	public BlastFishingListener(BlastFishing instance){
 		plugin = instance;
 	}
@@ -24,7 +27,6 @@ public class BlastFishingListener implements Listener{
 	public void onRightClick(PlayerInteractEvent event){
 
 		Player p = event.getPlayer();
-		p.sendMessage("Event");
 		BlockIterator bit = new BlockIterator(p, 8);
 		Block end = null;
 		while(bit.hasNext())
@@ -33,18 +35,13 @@ public class BlastFishingListener implements Listener{
 		    if(!end.getType().equals(Material.AIR))//we've hit something, and thus our block iterator stops
 		    	break;
 		}
-		if(end == null)
-			return;
-		
-		p.sendMessage(end.getType().name());
-		
-		if(!end.getType().equals(Material.WATER) && !end.getType().equals(Material.STATIONARY_WATER)){//if we didn't hit water
+				
+		if(end == null || (!end.getType().equals(Material.WATER) && !end.getType().equals(Material.STATIONARY_WATER))){//if we didn't hit water
 			return;
 		}
 		//so now we know we hit water
 //		p.sendMessage("Hit water");
 	    if(p.getItemInHand().getType().equals(Material.TNT)){
-	    	p.sendMessage("TNTB");
 	    	Location explosionLoc = end.getLocation().subtract(0, 1, 0);
 	    	p.getWorld().createExplosion(explosionLoc.getX(), explosionLoc.getY(), explosionLoc.getZ(), 1.0f, false, false);//we can't use a location here because no methods for location with two falses
 	    	
@@ -73,9 +70,8 @@ public class BlastFishingListener implements Listener{
 	    	else
 	    		i.setAmount(i.getAmount() - 1);
 	    	p.setItemInHand(i);
+	    	p.sendMessage(messages[(int)(Math.random() * messages.length)]);
 	    	
-	    } else{
-	    	p.sendMessage(p.getItemInHand().getType().name());
 	    }
 
 	}

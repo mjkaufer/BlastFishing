@@ -27,8 +27,9 @@ public class BlastFishingListener implements Listener{
 	public void onRightClick(PlayerInteractEvent event){
 		
 		Player p = event.getPlayer();
-		if(!p.isSneaking())//player must be sneaking to use
+		if(!p.isSneaking() || !p.hasPermission("BlastFishing.use"))//player must be sneaking to use, and must have permission
 			return;
+
 		BlockIterator bit = new BlockIterator(p, 8);
 		Block end = null;
 		while(bit.hasNext())

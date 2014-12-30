@@ -6,6 +6,6 @@ commands:
     blastfishing:
         description: returns plugin info
 permissions:
-    BlastFishing.canFish:
+    BlastFishing.use:
         description: allows users to blastfish
-        default: op
+        default: true
